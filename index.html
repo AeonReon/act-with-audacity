@@ -293,6 +293,211 @@
   .success strong { color: var(--gold); display: block; font-size: 18px; margin-bottom: 6px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; }
   .success span { color: var(--ink-dim); font-size: 14px; }
 
+  /* ===== ERA SHIFT ===== */
+  .era {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(212, 169, 67, 0.07), transparent 55%),
+      radial-gradient(circle at 85% 90%, rgba(212, 169, 67, 0.05), transparent 55%),
+      #070707;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 130px 0;
+    position: relative;
+  }
+
+  .era::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  .era .container-narrow { position: relative; z-index: 1; }
+
+  .era-eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(212, 169, 67, 0.3);
+  }
+
+  .era h2 {
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 0.95;
+    margin-bottom: 48px;
+    max-width: 16ch;
+  }
+
+  .era h2 .accent { color: var(--gold); }
+  .era h2 .strike {
+    position: relative;
+    display: inline-block;
+  }
+  .era h2 .strike::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    top: 52%;
+    height: 4px;
+    background: var(--gold);
+    transform: rotate(-2deg);
+  }
+
+  .era .para {
+    font-size: clamp(17px, 1.6vw, 19px);
+    line-height: 1.7;
+    margin-bottom: 22px;
+    color: var(--ink-dim);
+  }
+  .era .para strong { color: var(--ink); font-weight: 500; }
+
+  .era-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 60px 0;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .era-step {
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.015);
+    border-right: 1px solid var(--line);
+    position: relative;
+    text-align: left;
+  }
+
+  .era-step:last-child { border-right: none; }
+
+  .era-step .era-era {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 10px;
+  }
+
+  .era-step .era-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .era-step .era-note {
+    font-size: 12px;
+    color: var(--ink-quiet);
+    line-height: 1.5;
+  }
+
+  .era-step.now {
+    background: rgba(212, 169, 67, 0.08);
+    border-right-color: rgba(212, 169, 67, 0.2);
+  }
+
+  .era-step.now .era-era { color: var(--gold); }
+  .era-step.now .era-name { color: var(--gold-bright); }
+  .era-step.now .era-note { color: var(--ink); }
+
+  .era-step.now::before {
+    content: "NOW";
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+
+  .pullquote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6.5vw, 78px);
+    line-height: 1;
+    text-align: left;
+    margin: 70px 0;
+    padding: 50px 0;
+    border-top: 1px solid rgba(212, 169, 67, 0.3);
+    border-bottom: 1px solid rgba(212, 169, 67, 0.3);
+    letter-spacing: 0.02em;
+  }
+
+  .pullquote .line { display: block; }
+  .pullquote .accent { color: var(--gold); font-style: italic; }
+  .pullquote .dim { color: var(--ink-quiet); }
+
+  .era-flow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(20px, 2.4vw, 28px);
+    letter-spacing: 0.05em;
+    margin: 30px 0 40px;
+    color: var(--ink);
+  }
+
+  .era-flow .token {
+    padding: 10px 18px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 2px;
+  }
+
+  .era-flow .arrow {
+    color: var(--ink-quiet);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+  }
+
+  .era-flow .repeat {
+    margin-left: 8px;
+    color: var(--ink-quiet);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .era-kicker {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(24px, 3vw, 36px);
+    color: var(--gold);
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 640px) {
+    .era-timeline { grid-template-columns: 1fr; }
+    .era-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .era-step:last-child { border-bottom: none; }
+    .era { padding: 90px 0; }
+  }
+
   /* ===== SECTION ===== */
   section {
     padding: 110px 0;
@@ -716,6 +921,63 @@
       <span>Check your email for confirmation. Bring yourself and a phone. That's all you need.</span>
     </div>
     <p class="fine">Free to join. <strong>Limited to 50 spots.</strong> No spam, ever.</p>
+  </div>
+</section>
+
+<!-- ===== ERA SHIFT ===== -->
+<section class="era">
+  <div class="container-narrow">
+    <span class="era-eyebrow fade-in">Something just changed · quietly · permanently</span>
+    <h2 class="fade-in">The era that made you <span class="strike">valuable</span> just <span class="accent">ended.</span></h2>
+
+    <p class="para fade-in">For thirty years we lived in the Knowledge Age. The rules were simple. The people who knew more, won more. Best-read, best-educated, best-informed — they ran the table. Knowledge was the asset. Knowledge was the moat. Knowledge was the edge.</p>
+
+    <p class="para fade-in">Then, overnight, <strong>AI retired an entire category of human value.</strong></p>
+
+    <p class="para fade-in">Whatever you spent ten years learning, anyone with a phone can pull in ten seconds. The advantage you built your career on just evaporated. So did everyone else's. Knowledge went from rare to free in the time it took to update an app.</p>
+
+    <div class="era-timeline fade-in">
+      <div class="era-step">
+        <div class="era-era">1970 — 2000</div>
+        <div class="era-name">Information Age</div>
+        <div class="era-note">Access wins. Whoever could find it, owned it.</div>
+      </div>
+      <div class="era-step">
+        <div class="era-era">2000 — 2024</div>
+        <div class="era-name">Knowledge Age</div>
+        <div class="era-note">Expertise wins. Whoever understood it, led.</div>
+      </div>
+      <div class="era-step now">
+        <div class="era-era">2025 —</div>
+        <div class="era-name">Action Age</div>
+        <div class="era-note">Execution wins. Whoever moves, eats.</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote fade-in">
+      <span class="line">Knowledge is no longer</span>
+      <span class="line dim">the advantage.</span>
+      <span class="line accent">Action is.</span>
+    </blockquote>
+
+    <p class="para fade-in">The people who thrive in what's coming won't be the most knowledgeable in the room. They'll be the ones who can have an idea at 9am and be moving on it by 10.</p>
+
+    <p class="para fade-in"><strong>No negotiating with themselves. No waiting to feel ready. No asking permission.</strong></p>
+
+    <div class="era-flow fade-in">
+      <span class="token">Idea</span>
+      <span class="arrow">→</span>
+      <span class="token">Action</span>
+      <span class="arrow">→</span>
+      <span class="token">Result</span>
+      <span class="repeat">Repeat</span>
+    </div>
+
+    <p class="para fade-in">That's the whole game now. Everything else is decoration.</p>
+
+    <p class="para fade-in">And here's the part almost no one is telling you: <strong>this isn't a personality trait. It's not something you're born with.</strong> It's a trainable skill — and over the next decade, it will be the rarest and most valuable one in the world.</p>
+
+    <div class="era-kicker fade-in">The training is what this challenge is.</div>
   </div>
 </section>
 
