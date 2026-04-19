@@ -1,0 +1,32 @@
+Project: Act With Audacity
+Type: Landing page (single HTML file, embedded CSS + JS)
+Location: ~/Documents/Documents/APPS/act-with-audacity/
+
+Purpose
+-------
+Premium landing page for a 3-hour live online group challenge event.
+Target audience: ambitious self-developers stuck in the knowing/doing gap.
+Positioning: "The bridge between knowing and doing."
+
+Key elements
+------------
+- Dark theme (#0a0a0a) + gold accent (#d4a943)
+- Bebas Neue headings, Inter body
+- Live countdown timer to challenge date (30 days from build date)
+- Challenge date: 2026-05-19 19:00 local
+- Email + first name signup (no backend yet — shows success state)
+- Hero, Problem, Missing Piece, What Happens, Testimonials (3 written + 2 video placeholders), Details, FAQ, Final CTA
+- Challenge details kept deliberately cryptic
+
+Tech
+----
+- Single index.html, no build step
+- package.json + vercel.json for deployment
+- Deploy target: Vercel (AeonReon account)
+- Repo: github.com/AeonReon/act-with-audacity
+
+TODO / future
+-------------
+- Wire email form to Mailchimp/ConvertKit (currently UI only)
+- Real video testimonials when filmed
+- Decide final price ($0 vs $7) and update CTA copy if changed

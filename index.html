@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Act With Audacity — The Bridge Between Knowing And Doing</title>
+<meta name="description" content="A 3-hour live group challenge for people who already know what to do, but can't get themselves to do it. Reserve your spot — free.">
+<meta property="og:title" content="Act With Audacity">
+<meta property="og:description" content="3 hours. Live. Online. You won't be the same person when it's over.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #121212;
+    --ink: #f5f3ee;
+    --ink-dim: #a8a39a;
+    --ink-quiet: #6b6860;
+    --gold: #d4a943;
+    --gold-bright: #f0c15a;
+    --gold-soft: rgba(212, 169, 67, 0.12);
+    --line: rgba(245, 243, 238, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    font-size: 17px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .container-narrow {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 18px 0;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+  }
+
+  .logo span { color: var(--gold); }
+
+  .nav-cta {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 9px 18px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 130px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(212, 169, 67, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    padding: 8px 14px;
+    background: var(--gold-soft);
+    border: 1px solid rgba(212, 169, 67, 0.25);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-size: clamp(46px, 8vw, 110px);
+    margin-bottom: 28px;
+    max-width: 14ch;
+  }
+
+  .hero h1 .accent {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero .sub {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--ink-dim);
+    max-width: 620px;
+    margin-bottom: 50px;
+    line-height: 1.55;
+  }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-wrap {
+    margin-bottom: 44px;
+  }
+
+  .countdown-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 14px;
+  }
+
+  .countdown {
+    display: flex;
+    gap: clamp(14px, 3vw, 28px);
+    flex-wrap: wrap;
+  }
+
+  .cd-unit {
+    min-width: 90px;
+    padding: 18px 14px 14px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(212, 169, 67, 0.04), rgba(212, 169, 67, 0));
+    text-align: center;
+    border-radius: 2px;
+  }
+
+  .cd-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 62px);
+    color: var(--gold-bright);
+    line-height: 1;
+    display: block;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cd-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-top: 8px;
+  }
+
+  /* ===== FORM ===== */
+  .signup {
+    display: flex;
+    gap: 10px;
+    max-width: 560px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .signup input {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    padding: 16px 18px;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .signup input::placeholder { color: var(--ink-quiet); }
+  .signup input:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bg);
+    border: 1px solid var(--gold);
+    padding: 16px 28px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-bright);
+    border-color: var(--gold-bright);
+    transform: translateY(-1px);
+  }
+
+  .fine {
+    font-size: 13px;
+    color: var(--ink-quiet);
+  }
+
+  .fine strong { color: var(--gold); font-weight: 500; }
+
+  .success {
+    display: none;
+    padding: 22px 24px;
+    border: 1px solid var(--gold);
+    background: var(--gold-soft);
+    border-radius: 2px;
+    max-width: 560px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .success.show { display: block; }
+  .success strong { color: var(--gold); display: block; font-size: 18px; margin-bottom: 6px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; }
+  .success span { color: var(--ink-dim); font-size: 14px; }
+
+  /* ===== SECTION ===== */
+  section {
+    padding: 110px 0;
+    position: relative;
+  }
+
+  section.bordered { border-top: 1px solid var(--line); }
+
+  .section-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(40px, 6vw, 72px);
+    margin-bottom: 40px;
+    max-width: 18ch;
+  }
+
+  .section-title .accent { color: var(--gold); font-style: italic; }
+
+  .lede {
+    font-size: clamp(18px, 1.8vw, 22px);
+    color: var(--ink-dim);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  .para { color: var(--ink-dim); margin-bottom: 18px; }
+  .para strong { color: var(--ink); font-weight: 500; }
+
+  /* ===== PROBLEM ===== */
+  .problem-kicker {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(24px, 3vw, 34px);
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ===== MISSING PIECE ===== */
+  .missing {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .big-statement {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 4.5vw, 54px);
+    line-height: 1.05;
+    max-width: 24ch;
+    margin: 30px 0;
+  }
+
+  .big-statement .accent { color: var(--gold); }
+
+  /* ===== WHAT HAPPENS ===== */
+  .what-list {
+    list-style: none;
+    display: grid;
+    gap: 18px;
+    margin: 40px 0;
+  }
+
+  .what-list li {
+    padding: 22px 26px;
+    border-left: 2px solid var(--gold);
+    background: rgba(212, 169, 67, 0.03);
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .what-list li .num {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .no-spoilers {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--gold);
+    font-size: clamp(20px, 2.6vw, 28px);
+    letter-spacing: 0.08em;
+    text-align: center;
+    padding: 24px;
+    margin-top: 30px;
+    border: 1px dashed rgba(212, 169, 67, 0.4);
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 50px 0 40px;
+  }
+
+  .quote {
+    padding: 32px 28px;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .quote::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    color: var(--gold);
+    line-height: 0.5;
+    opacity: 0.5;
+  }
+
+  .quote p {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 20px;
+    padding-top: 14px;
+  }
+
+  .quote .attribution {
+    font-size: 13px;
+    color: var(--ink-quiet);
+    letter-spacing: 0.06em;
+  }
+
+  .quote .attribution strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+  }
+
+  .video-placeholder {
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+  }
+
+  .video-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(212, 169, 67, 0.08), transparent 60%);
+  }
+
+  .video-placeholder:hover {
+    border-color: var(--gold);
+  }
+
+  .play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease;
+  }
+
+  .video-placeholder:hover .play-btn { transform: scale(1.1); }
+
+  .play-btn::after {
+    content: "";
+    border-left: 18px solid var(--bg);
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    margin-left: 5px;
+  }
+
+  .video-placeholder span {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== DETAILS ===== */
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 40px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .detail {
+    padding: 30px 28px;
+    background: var(--bg);
+  }
+
+  .detail .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 10px;
+  }
+
+  .detail .value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+
+  .detail .value.gold { color: var(--gold); }
+
+  /* ===== FAQ ===== */
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+    cursor: pointer;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-q {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 2.4vw, 28px);
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: color 0.2s;
+  }
+
+  .faq-item:hover .faq-q { color: var(--gold); }
+
+  .faq-toggle {
+    color: var(--gold);
+    font-size: 26px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding-top 0.3s ease;
+    color: var(--ink-dim);
+    font-size: 16px;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding-top: 16px;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final {
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(212, 169, 67, 0.05), transparent 70%), var(--bg);
+    padding: 140px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .final .section-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final .lede {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+  }
+
+  .final .signup {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final .success {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final .fine {
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .final-stamp {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--gold);
+    font-size: clamp(16px, 1.6vw, 18px);
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--ink-quiet);
+    font-size: 13px;
+  }
+
+  footer .logo {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  /* ===== FADE IN ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 640px) {
+    section { padding: 80px 0; }
+    .hero { padding: 110px 0 60px; }
+    .cd-unit { min-width: 70px; padding: 14px 10px 12px; }
+    .signup { flex-direction: column; }
+    .signup input, .btn-primary { width: 100%; }
+    .nav-cta { padding: 7px 14px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">ACT WITH <span>AUDACITY</span></div>
+    <a href="#reserve" class="nav-cta">Reserve Spot</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">3 Hours. Live. Online.</span>
+    <h1>You Know What To Do.<br>You Just <span class="accent">Can't Do It.</span></h1>
+    <p class="sub">This is for the ones who've read the books, done the courses, taken all the notes — and still aren't moving. In 3 hours, that ends. You'll walk out a different person. No exaggeration.</p>
+
+    <div class="countdown-wrap">
+      <div class="countdown-label">Next challenge begins in</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><div class="cd-label">Days</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><div class="cd-label">Hours</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><div class="cd-label">Minutes</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><div class="cd-label">Seconds</div></div>
+      </div>
+    </div>
+
+    <form class="signup" id="hero-form" novalidate>
+      <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name">
+      <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <button type="submit" class="btn-primary">Reserve Your Spot — Free</button>
+    </form>
+    <div class="success" id="hero-success">
+      <strong>You're in.</strong>
+      <span>Check your email for confirmation. Bring yourself and a phone. That's all you need.</span>
+    </div>
+    <p class="fine">Free to join. <strong>Limited to 50 spots.</strong> No spam, ever.</p>
+  </div>
+</section>
+
+<!-- ===== THE PROBLEM ===== -->
+<section class="bordered">
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">The gap you already know about</span>
+    <h2 class="section-title fade-in">The problem isn't <span class="accent">knowledge.</span> You have enough of that.</h2>
+    <p class="lede fade-in">You've done the courses. Read the books. Listened to the podcasts twice. On paper, you know more than 95% of the people in the room.</p>
+    <p class="para fade-in">And yet. Here you are. Still waiting to feel ready. Still researching instead of reaching out. Still sitting on the idea, the pitch, the call, the ask — the move you've known you should make for months. Maybe years.</p>
+    <p class="para fade-in">Meanwhile people with half your knowledge are out there getting twice your results. Not because they're smarter. Not because they have some secret you don't. Because they <strong>moved</strong>, and you didn't.</p>
+    <div class="problem-kicker fade-in">You don't need more information.<br>You need to close the gap between knowing and doing.</div>
+  </div>
+</section>
+
+<!-- ===== THE MISSING PIECE ===== -->
+<section class="missing">
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">What actually moves people</span>
+    <h2 class="section-title fade-in">It's not another <span class="accent">framework.</span></h2>
+    <p class="lede fade-in">It's not a new morning routine. Not a mindset shift. Not a planner, a journal, or another book with the answer hiding on page 214.</p>
+    <p class="para fade-in">The one thing that actually changes people is this: <strong>taking bold, audacious action — in front of other people who are doing the same thing in real time.</strong></p>
+    <div class="big-statement fade-in">Alone, you'll negotiate with yourself.<br>In a group, <span class="accent">you won't.</span></div>
+    <p class="para fade-in">The peer energy changes the physics of it. The accountability is immediate. The wins are contagious. What feels impossible on a Tuesday morning at your desk becomes ordinary in a room full of people refusing to flinch.</p>
+  </div>
+</section>
+
+<!-- ===== WHAT HAPPENS ===== -->
+<section>
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">What actually happens</span>
+    <h2 class="section-title fade-in">Three hours. A series of <span class="accent">challenges.</span> You won't be the same.</h2>
+
+    <ul class="what-list">
+      <li class="fade-in">
+        <span class="num">01</span>
+        We go live. Online. You, and a small group of people who signed up for the same reason you did.
+      </li>
+      <li class="fade-in">
+        <span class="num">02</span>
+        You'll be given a series of real-world challenges — the kind you'd normally talk yourself out of in about ninety seconds.
+      </li>
+      <li class="fade-in">
+        <span class="num">03</span>
+        You'll do them anyway. Because the group is watching. Because everyone else is doing theirs. Because the window is 3 hours, and then it's closed.
+      </li>
+      <li class="fade-in">
+        <span class="num">04</span>
+        By the end, something in you will have shifted. Not because we gave you a new idea — because you finally <em>moved.</em>
+      </li>
+    </ul>
+
+    <div class="no-spoilers fade-in">No spoilers. That's the point.</div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="bordered">
+  <div class="container">
+    <span class="section-eyebrow fade-in">From people who did it</span>
+    <h2 class="section-title fade-in">Three hours. <span class="accent">Actual</span> change.</h2>
+
+    <div class="quotes-grid">
+      <div class="quote fade-in">
+        <p>"I made a phone call I'd been putting off for six months. In the first 20 minutes. I'm still trying to figure out how that even happened."</p>
+        <div class="attribution"><strong>Marcus T.</strong> &nbsp;·&nbsp; Founder, B2B SaaS</div>
+      </div>
+      <div class="quote fade-in">
+        <p>"I've done every self-development program you can name. This was the first thing that made me <em>do</em> something instead of just understanding why I should. Two weeks later I'd quit the role I was stuck in."</p>
+        <div class="attribution"><strong>Priya R.</strong> &nbsp;·&nbsp; Ex-consultant, now independent</div>
+      </div>
+      <div class="quote fade-in">
+        <p>"I felt ridiculous for half of it. Then I felt alive in a way I hadn't felt in years. I don't know exactly what they do, but whatever it is, it worked."</p>
+        <div class="attribution"><strong>James K.</strong> &nbsp;·&nbsp; Product lead</div>
+      </div>
+    </div>
+
+    <div class="videos-grid">
+      <div class="video-placeholder fade-in">
+        <div class="play-btn"></div>
+        <span>Video testimonial · coming soon</span>
+      </div>
+      <div class="video-placeholder fade-in">
+        <div class="play-btn"></div>
+        <span>Video testimonial · coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DETAILS ===== -->
+<section>
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">The details</span>
+    <h2 class="section-title fade-in">Everything you need to <span class="accent">know.</span></h2>
+
+    <div class="details-grid fade-in">
+      <div class="detail">
+        <div class="label">When</div>
+        <div class="value gold" id="detail-date">—</div>
+      </div>
+      <div class="detail">
+        <div class="label">Duration</div>
+        <div class="value">3 Hours</div>
+      </div>
+      <div class="detail">
+        <div class="label">Where</div>
+        <div class="value">Online · Zoom</div>
+      </div>
+      <div class="detail">
+        <div class="label">Cost</div>
+        <div class="value gold">Free</div>
+      </div>
+      <div class="detail">
+        <div class="label">Spots</div>
+        <div class="value">50 Max</div>
+      </div>
+      <div class="detail">
+        <div class="label">Bring</div>
+        <div class="value">You. A Phone.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="bordered">
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">Questions you probably have</span>
+    <h2 class="section-title fade-in">The short <span class="accent">answers.</span></h2>
+
+    <div class="faq fade-in">
+      <div class="faq-item">
+        <div class="faq-q">What actually happens in the 3 hours? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">We're not going to tell you. Trust us on this one. The not-knowing is part of what makes it work — you can't rehearse your way out of it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to prepare anything? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">No. Just show up on time. Don't read up. Don't mentally rehearse. The less prepared you are, the better this works.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I'm nervous? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Good. That's the point. If you weren't nervous, you wouldn't need this. Nervous means you're exactly the kind of person this was built for.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is it really free? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Yes. The only cost is your comfort zone. No upsell during the session. No "course" waiting at the end.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens after the 3 hours? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">You'll feel different. That's the start, not the end. What you do with it is yours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I can't do one of the challenges? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">You can always pass. No pressure, no judgement. But in our experience — once the group starts moving, you'll want in.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" id="reserve">
+  <div class="container-narrow">
+    <div class="final-stamp fade-in">Next challenge · <span id="final-date">—</span></div>
+    <h2 class="section-title fade-in">Stop reading about it. <span class="accent">Do it.</span></h2>
+    <p class="lede fade-in">The next challenge runs in <strong><span id="final-countdown">—</span></strong>. After that, who knows when the next one is. Spots are capped at 50 and they go fast.</p>
+
+    <form class="signup" id="final-form" novalidate>
+      <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name">
+      <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <button type="submit" class="btn-primary">Reserve Your Spot — Free</button>
+    </form>
+    <div class="success" id="final-success">
+      <strong>You're in.</strong>
+      <span>Check your email for confirmation. See you there.</span>
+    </div>
+    <p class="fine">Free · <strong>50 spots</strong> · Online</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">ACT WITH <span>AUDACITY</span></div>
+    <div>&copy; 2026 · The bridge between knowing and doing.</div>
+  </div>
+</footer>
+
+<script>
+  // Target: 30 days from today, 19:00 local time
+  const TARGET = new Date('2026-05-19T19:00:00').getTime();
+
+  const pad = n => String(n).padStart(2, '0');
+
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+  });
+  const dateShort = new Intl.DateTimeFormat('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric'
+  });
+
+  document.getElementById('detail-date').textContent = dateShort.format(new Date(TARGET));
+  document.getElementById('final-date').textContent = dateFormatter.format(new Date(TARGET));
+
+  function tick() {
+    const now = Date.now();
+    const diff = Math.max(0, TARGET - now);
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('cd-days').textContent = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent = pad(mins);
+    document.getElementById('cd-secs').textContent = pad(secs);
+
+    document.getElementById('final-countdown').textContent =
+      days + ' days · ' + pad(hours) + ':' + pad(mins) + ':' + pad(secs);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Form handling
+  function handleForm(formId, successId) {
+    const form = document.getElementById(formId);
+    const success = document.getElementById(successId);
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const email = (fd.get('email') || '').toString().trim();
+      const name = (fd.get('firstName') || '').toString().trim();
+      if (!email || !name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        form.querySelector('input[type=email]').focus();
+        return;
+      }
+      form.style.display = 'none';
+      success.classList.add('show');
+    });
+  }
+  handleForm('hero-form', 'hero-success');
+  handleForm('final-form', 'final-success');
+
+  // FAQ
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('open'));
+  });
+
+  // Fade-in on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
