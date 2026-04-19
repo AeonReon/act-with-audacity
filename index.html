@@ -1194,6 +1194,527 @@
   }
 
   /* ========================================================
+     VISUAL 5 — Enhanced Era Timeline (v2)
+     ======================================================== */
+  .era-timeline-v2 {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 32px;
+    margin: 80px 0 50px;
+    align-items: stretch;
+  }
+
+  .era-step-v2 {
+    padding: 30px 26px 26px;
+    background: var(--paper);
+    border: 1px solid var(--paper-border);
+    border-radius: 6px;
+    position: relative;
+    text-align: left;
+    opacity: 0.55;
+    filter: grayscale(0.6);
+    transition: transform 0.3s ease;
+  }
+
+  .era-step-v2.current {
+    opacity: 1;
+    filter: none;
+    background: linear-gradient(135deg, #fff5dc 0%, #fde9b3 100%);
+    border: 2px solid var(--gold-bright);
+    box-shadow: 0 0 30px rgba(230, 168, 23, 0.3);
+    transform: scale(1.06);
+    animation: pulseGlow 3.2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 30px rgba(230, 168, 23, 0.28); }
+    50% { box-shadow: 0 0 55px rgba(230, 168, 23, 0.55), 0 0 100px rgba(230, 168, 23, 0.15); }
+  }
+
+  .era-step-v2 .era-arrow-between {
+    position: absolute;
+    right: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-dark-quiet);
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    z-index: 2;
+    width: 28px;
+    text-align: center;
+  }
+
+  .era-step-v2:last-child .era-arrow-between { display: none; }
+
+  .era-step-v2.current .era-arrow-between { color: var(--gold-deep); }
+
+  .era-star {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    background: var(--gold-bright);
+    color: var(--ink-dark);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 16px rgba(230, 168, 23, 0.55);
+  }
+
+  .you-are-here {
+    position: absolute;
+    top: -48px;
+    right: -8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    color: var(--ink-dark);
+    padding: 7px 14px;
+    background: var(--gold-bright);
+    border-radius: 20px;
+    box-shadow: 0 4px 14px rgba(230, 168, 23, 0.35);
+    white-space: nowrap;
+  }
+
+  .you-are-here::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid var(--gold-bright);
+  }
+
+  .era-step-v2 .era-era,
+  .era-step-v2 .era-name,
+  .era-step-v2 .era-note {
+    font-family: inherit;
+  }
+
+  /* ========================================================
+     VISUAL 1 — Old Way vs New Way
+     ======================================================== */
+  .vs-wrap {
+    margin: 80px 0;
+  }
+
+  .vs-title {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(24px, 2.8vw, 34px);
+    letter-spacing: 0.06em;
+    color: var(--ink-dark);
+    margin-bottom: 40px;
+  }
+
+  .vs-title .accent {
+    color: var(--gold-deep);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .vs-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+  }
+
+  .vs-panels .vs-versus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--ink-dark);
+    color: var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    z-index: 3;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    border: 2px solid var(--gold-bright);
+  }
+
+  .vs-panel {
+    background: linear-gradient(180deg, #141a2e 0%, #0a0f1e 100%);
+    border-radius: 8px;
+    padding: 40px 28px 32px;
+    position: relative;
+    overflow: hidden;
+    color: var(--ink-light);
+  }
+
+  .vs-panel.old {
+    opacity: 0.78;
+    border: 1px solid rgba(200, 100, 100, 0.18);
+  }
+
+  .vs-panel.old::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(180, 60, 60, 0.08), rgba(60, 60, 70, 0.12));
+    pointer-events: none;
+  }
+
+  .vs-panel.new {
+    border: 2px solid var(--gold-bright);
+    box-shadow: 0 0 40px rgba(230, 168, 23, 0.2), inset 0 0 30px rgba(230, 168, 23, 0.04);
+  }
+
+  .vs-panel.new::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230, 168, 23, 0.14), transparent 70%);
+    pointer-events: none;
+  }
+
+  .vs-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .vs-panel.old .vs-label { color: var(--ink-light-quiet); }
+  .vs-panel.new .vs-label { color: var(--gold-bright); border-bottom-color: rgba(230, 168, 23, 0.3); }
+
+  .vs-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vs-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink-light-dim);
+  }
+
+  .vs-panel.old .vs-step {
+    text-decoration: line-through;
+    text-decoration-color: rgba(230, 80, 80, 0.45);
+    text-decoration-thickness: 2px;
+  }
+
+  .vs-panel.new .vs-step {
+    background: rgba(230, 168, 23, 0.08);
+    border-color: rgba(230, 168, 23, 0.3);
+    color: var(--ink-light);
+  }
+
+  .vs-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    filter: grayscale(0.3);
+  }
+
+  .vs-panel.new .vs-icon { filter: none; }
+
+  .vs-arrow {
+    color: var(--ink-light-quiet);
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+    margin: 1px 0;
+  }
+
+  .vs-panel.new .vs-arrow { color: var(--gold-bright); }
+
+  .vs-footer {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vs-panel.old .vs-footer { color: var(--ink-light-quiet); }
+  .vs-panel.new .vs-footer {
+    color: var(--gold-bright);
+    border-top-color: rgba(230, 168, 23, 0.3);
+  }
+
+  /* ========================================================
+     VISUAL 2 — The Gap / Bridge
+     ======================================================== */
+  .gap-visual {
+    margin: 60px 0 80px;
+    padding: 50px 20px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .gap-main {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gap-pillar {
+    padding: 22px 24px;
+    background: var(--ink-dark);
+    color: var(--ink-light);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(18px, 2.2vw, 26px);
+    letter-spacing: 0.14em;
+    border-radius: 4px;
+    box-shadow: 0 10px 24px rgba(23, 22, 31, 0.18);
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .gap-bridge {
+    position: relative;
+    height: 150px;
+    min-width: 200px;
+  }
+
+  .gap-bridge svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .gap-bridge .bridge-label {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(20px, 2.8vw, 34px);
+    color: var(--gold-deep);
+    letter-spacing: 0.2em;
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+  }
+
+  .gap-bridge .gap-tag {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-dark-quiet);
+  }
+
+  .gap-copy {
+    max-width: 580px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-dark-dim);
+    font-style: italic;
+    padding-top: 8px;
+  }
+
+  .gap-copy strong { color: var(--ink-dark); font-weight: 600; font-style: normal; }
+
+  /* ========================================================
+     VISUAL 3 — Three Hours Timeline
+     ======================================================== */
+  .three-hours {
+    margin: 30px 0 60px;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, #fff8e8 0%, #fff 100%);
+    border: 1px solid var(--paper-border);
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .th-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(26px, 3.2vw, 38px);
+    color: var(--ink-dark);
+    letter-spacing: 0.05em;
+  }
+
+  .th-title .accent {
+    color: var(--gold-deep);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .th-track {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .th-track::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(230, 168, 23, 0.35), var(--gold-bright) 50%, rgba(230, 168, 23, 0.35));
+    z-index: 0;
+    border-radius: 2px;
+  }
+
+  .th-point {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    flex: 1;
+    padding: 0 6px;
+  }
+
+  .th-dot {
+    width: 34px;
+    height: 34px;
+    background: var(--gold-bright);
+    border: 4px solid var(--paper);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 0 2px var(--gold-bright), 0 8px 18px rgba(230, 168, 23, 0.4);
+    transition: transform 0.25s ease;
+    cursor: pointer;
+  }
+
+  .th-point:hover .th-dot {
+    transform: scale(1.18);
+  }
+
+  .th-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 2.4vw, 28px);
+    color: var(--gold-deep);
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .th-note {
+    font-size: 13px;
+    color: var(--ink-dark-dim);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 680px) {
+    .three-hours { padding: 36px 20px 28px; }
+    .th-track { flex-direction: column; gap: 28px; padding: 0; }
+    .th-track::before {
+      left: 16px; right: auto; top: 10%; bottom: 10%;
+      width: 3px; height: auto;
+    }
+    .th-point {
+      max-width: 100%;
+      text-align: left;
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 0;
+    }
+    .th-dot { margin: 4px 0 0; }
+    .th-time { margin-bottom: 4px; }
+  }
+
+  /* ========================================================
+     VISUAL 4 — Stat callouts
+     ======================================================== */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin: 30px 0 60px;
+  }
+
+  .stat {
+    padding: 44px 26px 36px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(230, 168, 23, 0.28);
+    border-radius: 6px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(62px, 8vw, 100px);
+    line-height: 1;
+    color: var(--gold-bright);
+    text-shadow: 0 0 30px rgba(230, 168, 23, 0.35);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light-dim);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 720px) {
+    .stats { grid-template-columns: 1fr; gap: 16px; }
+    .stat { padding: 32px 24px 28px; }
+  }
+
+  /* ========================================================
      MOBILE
      ======================================================== */
   @media (max-width: 740px) {
@@ -1202,6 +1723,29 @@
     .era-timeline { grid-template-columns: 1fr; }
     .era-step { border-right: none; border-bottom: 1px solid var(--paper-border); }
     .era-step:last-child { border-bottom: none; }
+    .era-timeline-v2 {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+    .era-step-v2.current { transform: none; }
+    .era-step-v2 .era-arrow-between {
+      right: 50%;
+      top: auto;
+      bottom: -30px;
+      transform: translateX(50%) rotate(90deg);
+    }
+    .you-are-here { top: -34px; right: 8px; font-size: 11px; padding: 5px 10px; }
+    .vs-panels { grid-template-columns: 1fr; gap: 20px; }
+    .vs-panels .vs-versus {
+      position: static;
+      transform: none;
+      margin: 0 auto;
+      width: 48px;
+      height: 48px;
+      font-size: 15px;
+    }
+    .gap-main { grid-template-columns: 1fr; gap: 8px; }
+    .gap-bridge { height: 120px; }
     .signup { flex-direction: column; }
     .signup input, .btn-primary { width: 100%; }
     .countdown-wrap { padding: 22px 18px; }
@@ -1271,21 +1815,25 @@
 
     <p class="para fade-in">Whatever you spent ten years learning, anyone with a phone can pull in ten seconds. The advantage you built your career on just evaporated. So did everyone else's. Knowledge went from rare to free in the time it took to update an app.</p>
 
-    <div class="era-timeline fade-in">
-      <div class="era-step">
-        <div class="era-era">1970 — 2000</div>
+    <div class="era-timeline-v2 fade-in">
+      <div class="era-step-v2">
+        <div class="era-era">1970s — 2000s</div>
         <div class="era-name">Information Age</div>
-        <div class="era-note">Access wins. Whoever could find it, owned it.</div>
+        <div class="era-note">Whoever had the information won.</div>
+        <div class="era-arrow-between">→</div>
       </div>
-      <div class="era-step">
-        <div class="era-era">2000 — 2024</div>
+      <div class="era-step-v2">
+        <div class="era-era">2000s — 2023</div>
         <div class="era-name">Knowledge Age</div>
-        <div class="era-note">Expertise wins. Whoever understood it, led.</div>
+        <div class="era-note">Whoever applied the information won.</div>
+        <div class="era-arrow-between">→</div>
       </div>
-      <div class="era-step now">
-        <div class="era-era">2025 —</div>
+      <div class="era-step-v2 current">
+        <div class="you-are-here">You Are Here →</div>
+        <div class="era-star">★</div>
+        <div class="era-era">2024 → now</div>
         <div class="era-name">Action Age</div>
-        <div class="era-note">Execution wins. Whoever moves, eats.</div>
+        <div class="era-note">Whoever moves fastest wins. Full stop.</div>
       </div>
     </div>
 
@@ -1310,6 +1858,39 @@
 
     <p class="para fade-in">That's the whole game now. Everything else is decoration.</p>
 
+    <div class="vs-wrap fade-in">
+      <div class="vs-title">The old way is <span class="accent">dead.</span> The new way is live.</div>
+      <div class="vs-panels">
+        <div class="vs-versus">VS</div>
+        <div class="vs-panel old">
+          <div class="vs-label">The Old Way</div>
+          <div class="vs-steps">
+            <div class="vs-step"><span class="vs-icon">&#127891;</span>Graduate</div>
+            <div class="vs-arrow">&#8595;</div>
+            <div class="vs-step"><span class="vs-icon">&#128218;</span>Study Everything</div>
+            <div class="vs-arrow">&#8595;</div>
+            <div class="vs-step"><span class="vs-icon">&#127942;</span>Become The Expert</div>
+            <div class="vs-arrow">&#8595;</div>
+            <div class="vs-step"><span class="vs-icon">&#128176;</span>Sell Your Knowledge</div>
+          </div>
+          <div class="vs-footer">The Knowledge Economy — R.I.P.</div>
+        </div>
+        <div class="vs-panel new">
+          <div class="vs-label">The New Way</div>
+          <div class="vs-steps">
+            <div class="vs-step"><span class="vs-icon">&#9889;</span>Have An Idea</div>
+            <div class="vs-arrow">&#8595;</div>
+            <div class="vs-step"><span class="vs-icon">&#128736;&#65039;</span>Use The Tools (free)</div>
+            <div class="vs-arrow">&#8595;</div>
+            <div class="vs-step"><span class="vs-icon">&#128640;</span>ACT — Immediately, Boldly</div>
+            <div class="vs-arrow">&#8595;</div>
+            <div class="vs-step"><span class="vs-icon">&#128176;</span>Results</div>
+          </div>
+          <div class="vs-footer">The Action Economy — Right Now</div>
+        </div>
+      </div>
+    </div>
+
     <p class="para fade-in">And here's the part almost no one is telling you: <strong>this isn't a personality trait. It's not something you're born with.</strong> It's a trainable skill — and over the next decade, it will be the rarest and most valuable one in the world.</p>
 
     <div class="era-kicker fade-in">The training <span class="mark">is</span> what this challenge is.</div>
@@ -1331,6 +1912,43 @@
 <!-- ==================== THE MISSING PIECE — LIGHT warm ==================== -->
 <section class="section-light-warm">
   <div class="container-narrow">
+    <div class="gap-visual fade-in">
+      <div class="gap-main">
+        <div class="gap-pillar">Knowledge</div>
+        <div class="gap-bridge">
+          <div class="gap-tag">The Gap</div>
+          <svg viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bridgeFill" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.2"/>
+                <stop offset="50%" stop-color="#E6A817" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#C9A84C" stop-opacity="0.2"/>
+              </linearGradient>
+            </defs>
+            <!-- chasm base lines -->
+            <line x1="0" y1="110" x2="60" y2="110" stroke="#8a8692" stroke-width="1.5" stroke-dasharray="3,4"/>
+            <line x1="340" y1="110" x2="400" y2="110" stroke="#8a8692" stroke-width="1.5" stroke-dasharray="3,4"/>
+            <!-- bridge arch -->
+            <path d="M 30 95 Q 200 10 370 95" fill="none" stroke="url(#bridgeFill)" stroke-width="4"/>
+            <!-- bridge deck -->
+            <path d="M 30 95 Q 200 45 370 95" fill="none" stroke="#17161f" stroke-width="3"/>
+            <!-- suspender cables -->
+            <line x1="90" y1="60" x2="90" y2="85" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="140" y1="48" x2="140" y2="75" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="200" y1="42" x2="200" y2="67" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="260" y1="48" x2="260" y2="75" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="310" y1="60" x2="310" y2="85" stroke="#C9A84C" stroke-width="1.5"/>
+            <!-- towers -->
+            <line x1="60" y1="40" x2="60" y2="110" stroke="#17161f" stroke-width="4"/>
+            <line x1="340" y1="40" x2="340" y2="110" stroke="#17161f" stroke-width="4"/>
+          </svg>
+          <div class="bridge-label">AUDACITY</div>
+        </div>
+        <div class="gap-pillar">Results</div>
+      </div>
+      <p class="gap-copy"><strong>Most people have the knowledge. Most people want the results.</strong><br>Almost nobody crosses the gap. This is the crossing.</p>
+    </div>
+
     <span class="section-eyebrow fade-in">What actually moves people</span>
     <h2 class="section-title fade-in">It's not another <span class="accent">framework.</span></h2>
     <p class="lede fade-in">It's not a new morning routine. Not a mindset shift. Not a planner, a journal, or another book with the answer hiding on page 214.</p>
@@ -1375,6 +1993,21 @@
     <span class="section-eyebrow fade-in">From people who did it</span>
     <h2 class="section-title fade-in">Three hours. <span class="accent">Actual</span> change.</h2>
 
+    <div class="stats fade-in">
+      <div class="stat">
+        <div class="stat-num">3 Hours</div>
+        <div class="stat-label">That's all it takes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1 Session</div>
+        <div class="stat-label">To shift your identity</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0 Excuses</div>
+        <div class="stat-label">Accepted</div>
+      </div>
+    </div>
+
     <div class="quotes-grid">
       <div class="quote fade-in">
         <p>I made a phone call I'd been putting off for six months. In the first 20 minutes. I'm still trying to figure out how that even happened.</p>
@@ -1406,6 +2039,32 @@
 <!-- ==================== DETAILS — LIGHT paper, gold border ==================== -->
 <section class="section-light-paper">
   <div class="container-narrow">
+    <div class="three-hours fade-in">
+      <div class="th-title">Three hours. <span class="accent">Four moments.</span></div>
+      <div class="th-track">
+        <div class="th-point">
+          <div class="th-dot"></div>
+          <div class="th-time">0:00</div>
+          <div class="th-note">You arrive. Slightly nervous. Maybe skeptical.</div>
+        </div>
+        <div class="th-point">
+          <div class="th-dot"></div>
+          <div class="th-time">1:00</div>
+          <div class="th-note">Something shifts. You did something you wouldn't have done alone.</div>
+        </div>
+        <div class="th-point">
+          <div class="th-dot"></div>
+          <div class="th-time">2:00</div>
+          <div class="th-note">You're surprised by yourself.</div>
+        </div>
+        <div class="th-point">
+          <div class="th-dot"></div>
+          <div class="th-time">3:00</div>
+          <div class="th-note">You leave different.</div>
+        </div>
+      </div>
+    </div>
+
     <span class="section-eyebrow fade-in">The details</span>
     <h2 class="section-title fade-in">Everything you need to <span class="accent">know.</span></h2>
 
