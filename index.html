@@ -198,11 +198,37 @@
     backdrop-filter: blur(6px);
   }
 
+  .pre-headline {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(11px, 1vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(230, 168, 23, 0.5);
+  }
+
   .hero h1 {
-    font-size: clamp(44px, 8vw, 104px);
-    margin-bottom: 34px;
-    max-width: 20ch;
+    font-size: clamp(42px, 7.5vw, 96px);
+    margin-bottom: 26px;
+    max-width: 22ch;
     line-height: 0.98;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', 'Bebas Neue', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 34px);
+    line-height: 1.2;
+    color: var(--gold-bright);
+    margin-bottom: 28px;
+    max-width: 26ch;
+    letter-spacing: -0.01em;
   }
 
   .hero h1 .accent {
@@ -1661,6 +1687,220 @@
   }
 
   /* ========================================================
+     HEADSHOT STRIP — recent alumni
+     ======================================================== */
+  .alumni {
+    margin: 16px 0 54px;
+    text-align: center;
+  }
+
+  .alumni-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-light-quiet);
+    margin-bottom: 22px;
+  }
+
+  .alumni-label .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #2ecc71;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+    vertical-align: 1px;
+    animation: livePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+
+  .alumni-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(18px, 3vw, 40px);
+    flex-wrap: wrap;
+  }
+
+  .alum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 74px;
+  }
+
+  .alum-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a2648 0%, #1a1530 100%);
+    border: 2px solid rgba(230, 168, 23, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.04em;
+    color: var(--gold-bright);
+    margin-bottom: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+
+  .alum:nth-child(even) .alum-avatar {
+    background: linear-gradient(135deg, #3a2a2a 0%, #2a1a1a 100%);
+    border-color: rgba(230, 168, 23, 0.35);
+  }
+  .alum:nth-child(3n) .alum-avatar {
+    background: linear-gradient(135deg, #1f2a3a 0%, #121a28 100%);
+  }
+  .alum:nth-child(5n) .alum-avatar {
+    background: linear-gradient(135deg, #2a2335 0%, #1a1425 100%);
+  }
+
+  .alum-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-light-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* ========================================================
+     EVENT PHOTOS
+     ======================================================== */
+  .event-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 48px;
+  }
+
+  .event-photo {
+    aspect-ratio: 4 / 5;
+    background:
+      linear-gradient(135deg, #1a1f33 0%, #0f1224 100%);
+    border: 1px solid rgba(230, 168, 23, 0.2);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.3s ease;
+  }
+
+  .event-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 30%, rgba(230, 168, 23, 0.06), transparent 70%),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 2px, transparent 2px, transparent 6px);
+    pointer-events: none;
+  }
+
+  .event-photo::after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 34px;
+    border: 2px solid rgba(230, 168, 23, 0.55);
+    border-radius: 4px;
+    background:
+      radial-gradient(circle at 50% 60%, rgba(230, 168, 23, 0.2) 0 8px, transparent 9px),
+      linear-gradient(180deg, rgba(230, 168, 23, 0.05), transparent);
+    box-shadow: inset 0 0 0 4px rgba(10, 15, 30, 1);
+  }
+
+  .event-photo .ep-lens {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(230, 168, 23, 0.7);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .event-photo .ep-flash {
+    position: absolute;
+    top: calc(38% - 18px);
+    left: calc(50% + 14px);
+    width: 6px;
+    height: 6px;
+    background: var(--gold-bright);
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 12px var(--gold-bright);
+  }
+
+  .event-photo:hover {
+    border-color: rgba(230, 168, 23, 0.55);
+    transform: translateY(-3px);
+  }
+
+  .event-photo .ep-label {
+    position: relative;
+    z-index: 2;
+    padding: 18px 18px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4));
+  }
+
+  .event-photo .ep-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    color: var(--ink-light);
+    margin-bottom: 2px;
+  }
+
+  .event-photo .ep-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+  }
+
+  .event-photo .ep-placeholder-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-light-quiet);
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+    z-index: 2;
+  }
+
+  @media (max-width: 880px) {
+    .event-photos { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .event-photos { grid-template-columns: 1fr; }
+  }
+
+  /* ========================================================
      VISUAL 4 — Stat callouts
      ======================================================== */
   .stats {
@@ -1774,8 +2014,10 @@
 <section class="hero">
   <div class="container">
     <span class="eyebrow">3 Hours · Live · Online</span>
-    <h1>You've Read The Books. Done The Courses. Built The Knowledge.<br>So Why Are You <span class="accent">Still Waiting?</span></h1>
-    <p class="sub">The problem isn't what you know. It's what happens — or doesn't — <strong>after</strong> you know it. This changes that. In three hours.</p>
+    <div class="pre-headline">For The High-Achiever Who Knows They're Capable Of More</div>
+    <h1>The 3-Hour Live Challenge That Turns Everything You <em>Know</em> Into Everything You <span class="accent">Do.</span></h1>
+    <div class="hero-sub">You've read the books. Done the courses. Built the knowledge.<br>So why are you still waiting?</div>
+    <p class="sub">The problem isn't what you know. It's what happens — or doesn't — <strong>after</strong> you know it. One night. One room. And the version of you that's been on standby for years finally gets the green light.</p>
 
     <div class="countdown-wrap">
       <div class="countdown-label">Next Challenge Begins In</div>
@@ -1809,11 +2051,11 @@
     <span class="section-eyebrow fade-in">Something just changed · quietly · permanently</span>
     <h2 class="fade-in">The era that made you <span class="strike">valuable</span> just <span class="accent">ended.</span></h2>
 
-    <p class="para fade-in">For thirty years we lived in the Knowledge Age. The rules were simple. The people who knew more, won more. Best-read, best-educated, best-informed — they ran the table. Knowledge was the asset. Knowledge was the moat. Knowledge was the edge.</p>
+    <p class="para fade-in">For thirty years the rule was simple. Know more, win more. Best-read, best-educated, best-informed ran the table. Knowledge was the asset. The moat. The edge.</p>
 
-    <p class="para fade-in">Then, overnight, <strong>AI retired an entire category of human value.</strong></p>
+    <p class="para fade-in">Then AI happened.</p>
 
-    <p class="para fade-in">Whatever you spent ten years learning, anyone with a phone can pull in ten seconds. The advantage you built your career on just evaporated. So did everyone else's. Knowledge went from rare to free in the time it took to update an app.</p>
+    <p class="para fade-in">And overnight, <strong>an entire category of human value retired.</strong> Whatever you spent ten years learning, anyone with a phone can pull in ten seconds. It's free. It's instant. Your advantage. Theirs. Everyone's. Gone.</p>
 
     <div class="era-timeline-v2 fade-in">
       <div class="era-step-v2">
@@ -1843,9 +2085,9 @@
       <span class="line accent">Action is.</span>
     </blockquote>
 
-    <p class="para fade-in">The people who thrive in what's coming won't be the most knowledgeable in the room. They'll be the ones who can have an idea at 9am and be moving on it by 10.</p>
+    <p class="para fade-in">The people who'll thrive in what's coming aren't the most knowledgeable in the room. They're the ones who can have an idea at 9am and be moving on it by 10.</p>
 
-    <p class="para fade-in"><strong>No negotiating with themselves. No waiting to feel ready. No asking permission.</strong></p>
+    <p class="para fade-in"><strong>No research spiral. No "let me think about it." No "I'll start Monday."</strong></p>
 
     <div class="era-flow fade-in">
       <span class="token">Idea</span>
@@ -1856,7 +2098,7 @@
       <span class="repeat">Repeat</span>
     </div>
 
-    <p class="para fade-in">That's the whole game now. Everything else is decoration.</p>
+    <p class="para fade-in">Just: <strong>idea → action → result.</strong> Again. And again. That's the whole game now. Everything else is decoration.</p>
 
     <div class="vs-wrap fade-in">
       <div class="vs-title">The old way is <span class="accent">dead.</span> The new way is live.</div>
@@ -1891,21 +2133,25 @@
       </div>
     </div>
 
-    <p class="para fade-in">And here's the part almost no one is telling you: <strong>this isn't a personality trait. It's not something you're born with.</strong> It's a trainable skill — and over the next decade, it will be the rarest and most valuable one in the world.</p>
+    <p class="para fade-in">Here's the part nobody's saying out loud: <strong>this is not a personality trait.</strong> You weren't born with it or without it. It's a trainable skill. And over the next ten years, it will be the single most valuable skill on the planet.</p>
 
-    <div class="era-kicker fade-in">The training <span class="mark">is</span> what this challenge is.</div>
+    <div class="era-kicker fade-in">This challenge <span class="mark">is</span> the training.</div>
   </div>
 </section>
 
 <!-- ==================== THE PROBLEM — DARK slate ==================== -->
 <section class="section-dark-slate">
   <div class="container-narrow">
-    <span class="section-eyebrow fade-in">The gap you already know about</span>
-    <h2 class="section-title fade-in">The problem isn't <span class="accent">knowledge.</span> You have enough of that.</h2>
-    <p class="lede fade-in">You've done the courses. Read the books. Listened to the podcasts twice. On paper, you know more than 95% of the people in the room.</p>
-    <p class="para fade-in">And yet. Here you are. Still waiting to feel ready. Still researching instead of reaching out. Still sitting on the idea, the pitch, the call, the ask — the move you've known you should make for months. Maybe years.</p>
-    <p class="para fade-in">Meanwhile people with half your knowledge are out there getting twice your results. Not because they're smarter. Not because they have some secret you don't. Because they <strong>moved</strong>, and you didn't.</p>
-    <div class="problem-kicker fade-in">You don't need more information.<br>You need to close the gap between knowing and doing.</div>
+    <span class="section-eyebrow fade-in">Let's name the actual thing</span>
+    <h2 class="section-title fade-in">You're not lazy. You're not unmotivated. You're <span class="accent">frozen.</span></h2>
+    <p class="lede fade-in">And nobody's said it to you out loud, so let me.</p>
+    <p class="para fade-in">You've read more books than most people crushing it right now. You've got the courses. The notes. The highlighted passages. Podcasts on 1.5x. On paper, you know more than 95% of the room.</p>
+    <p class="para fade-in">So why is nothing moving?</p>
+    <p class="para fade-in">Because <strong>when the moment comes, you freeze.</strong></p>
+    <p class="para fade-in">Not dramatically. Quietly. You get the idea — and you decide to "research it first." You're about to send the message — you rewrite it seven times and close the tab. You know what you should do today — and somehow it ends up on tomorrow's list. Then next week's. Then six months pass.</p>
+    <p class="para fade-in">And the part that hurts? <strong>You can see it happening. In real time.</strong> You watch yourself not move. And you don't know how to stop.</p>
+    <p class="para fade-in">Meanwhile, people with half your knowledge are out there eating. Not because they're smarter. Not because they figured something out you haven't. They just <strong>moved.</strong> While you were still "getting ready."</p>
+    <div class="problem-kicker fade-in">You don't need more information.<br>You need to learn how to <em>move.</em></div>
   </div>
 </section>
 
@@ -1949,12 +2195,14 @@
       <p class="gap-copy"><strong>Most people have the knowledge. Most people want the results.</strong><br>Almost nobody crosses the gap. This is the crossing.</p>
     </div>
 
-    <span class="section-eyebrow fade-in">What actually moves people</span>
-    <h2 class="section-title fade-in">It's not another <span class="accent">framework.</span></h2>
-    <p class="lede fade-in">It's not a new morning routine. Not a mindset shift. Not a planner, a journal, or another book with the answer hiding on page 214.</p>
-    <p class="para fade-in">The one thing that actually changes people is this: <strong>taking bold, audacious action — in front of other people who are doing the same thing in real time.</strong></p>
+    <span class="section-eyebrow fade-in">The thing that actually works</span>
+    <h2 class="section-title fade-in">Here's the uncomfortable truth I had to <span class="accent">learn the hard way.</span></h2>
+    <p class="lede fade-in">Another course won't fix this. Another podcast won't. Another journal, planner, morning routine, productivity system? Also no.</p>
+    <p class="para fade-in"><strong>You can't think your way out of a doing problem.</strong></p>
+    <p class="para fade-in">The only thing — and I mean the <em>only</em> thing — that reliably changes people like us is taking action. Not careful action. Not "when I'm ready" action. <strong>Bold action.</strong> The kind your brain rejects in ninety seconds flat when you're sitting alone.</p>
     <div class="big-statement fade-in">Alone, you'll negotiate with yourself.<br>In a group, <span class="accent">you won't.</span></div>
-    <p class="para fade-in">The peer energy changes the physics of it. The accountability is immediate. The wins are contagious. What feels impossible on a Tuesday morning at your desk becomes ordinary in a room full of people refusing to flinch.</p>
+    <p class="para fade-in">Here's what happens when you do it with other people doing it at the same time. Something breaks. The loop snaps. The voice in your head that's been running you for ten years finally gets overruled — because suddenly you can see other people ignoring their version of that same voice, in real time, a few inches from your face.</p>
+    <p class="para fade-in">Peer energy rewrites the rules. Accountability is instant. The wins are contagious. What feels impossible at your desk on a Tuesday becomes <strong>ordinary</strong> in a room full of people who refuse to flinch.</p>
   </div>
 </section>
 
@@ -1967,19 +2215,19 @@
     <ul class="what-list">
       <li class="fade-in">
         <span class="num">01</span>
-        We go live. Online. You, and a small group of people who signed up for the same reason you did.
+        We go live. You, and a small room of people who raised their hand for the same reason you did.
       </li>
       <li class="fade-in">
         <span class="num">02</span>
-        You'll be given a series of real-world challenges — the kind you'd normally talk yourself out of in about ninety seconds.
+        You'll be given challenges. Real ones. The kind your brain rejects in about ninety seconds flat.
       </li>
       <li class="fade-in">
         <span class="num">03</span>
-        You'll do them anyway. Because the group is watching. Because everyone else is doing theirs. Because the window is 3 hours, and then it's closed.
+        You'll do them anyway. Because everyone else is doing theirs. Because the timer is running. Because this is exactly what you showed up for.
       </li>
       <li class="fade-in">
         <span class="num">04</span>
-        By the end, something in you will have shifted. Not because we gave you a new idea — because you finally <em>moved.</em>
+        Three hours later you close the tab — and something in you has moved. Not figuratively. Literally. You'll feel it in your chest.
       </li>
     </ul>
 
@@ -2008,6 +2256,19 @@
       </div>
     </div>
 
+    <div class="alumni fade-in">
+      <div class="alumni-label"><span class="dot"></span>Recent cohort · real humans, real moves</div>
+      <div class="alumni-row">
+        <div class="alum"><div class="alum-avatar">MT</div><div class="alum-name">Marcus T.</div></div>
+        <div class="alum"><div class="alum-avatar">PR</div><div class="alum-name">Priya R.</div></div>
+        <div class="alum"><div class="alum-avatar">JK</div><div class="alum-name">James K.</div></div>
+        <div class="alum"><div class="alum-avatar">ES</div><div class="alum-name">Emma S.</div></div>
+        <div class="alum"><div class="alum-avatar">DL</div><div class="alum-name">David L.</div></div>
+        <div class="alum"><div class="alum-avatar">AH</div><div class="alum-name">Aisha H.</div></div>
+        <div class="alum"><div class="alum-avatar">TC</div><div class="alum-name">Tom C.</div></div>
+      </div>
+    </div>
+
     <div class="quotes-grid">
       <div class="quote fade-in">
         <p>I made a phone call I'd been putting off for six months. In the first 20 minutes. I'm still trying to figure out how that even happened.</p>
@@ -2031,6 +2292,45 @@
       <div class="video-placeholder fade-in">
         <div class="play-btn"></div>
         <span>Video testimonial · coming soon</span>
+      </div>
+    </div>
+
+    <div class="event-photos">
+      <div class="event-photo fade-in">
+        <div class="ep-placeholder-tag">Photo</div>
+        <div class="ep-lens"></div>
+        <div class="ep-flash"></div>
+        <div class="ep-label">
+          <div class="ep-title">Launch Night</div>
+          <div class="ep-meta">Cohort 01 · Live</div>
+        </div>
+      </div>
+      <div class="event-photo fade-in">
+        <div class="ep-placeholder-tag">Photo</div>
+        <div class="ep-lens"></div>
+        <div class="ep-flash"></div>
+        <div class="ep-label">
+          <div class="ep-title">The First Move</div>
+          <div class="ep-meta">Minute 22 · Breakthrough</div>
+        </div>
+      </div>
+      <div class="event-photo fade-in">
+        <div class="ep-placeholder-tag">Photo</div>
+        <div class="ep-lens"></div>
+        <div class="ep-flash"></div>
+        <div class="ep-label">
+          <div class="ep-title">The Group</div>
+          <div class="ep-meta">Mid-session · Full Energy</div>
+        </div>
+      </div>
+      <div class="event-photo fade-in">
+        <div class="ep-placeholder-tag">Photo</div>
+        <div class="ep-lens"></div>
+        <div class="ep-flash"></div>
+        <div class="ep-label">
+          <div class="ep-title">After Hours</div>
+          <div class="ep-meta">Post-Challenge · Different People</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2137,7 +2437,7 @@
   <div class="container-narrow">
     <div class="final-stamp fade-in">Next Challenge · <span id="final-date">—</span></div>
     <h2 class="section-title fade-in">Stop reading about it. <span class="accent">Do it.</span></h2>
-    <p class="lede fade-in">The next challenge runs in <strong><span id="final-countdown">—</span></strong>. After that, who knows when the next one is. Spots are capped at 50 and they go fast.</p>
+    <p class="lede fade-in">The next one starts in <strong><span id="final-countdown">—</span></strong>. Fifty seats. When it's full, it's full — and the next date isn't on the calendar yet. Three hours from now could be the Tuesday everything turned.</p>
 
     <div class="form-card">
       <div class="form-eyebrow">Reserve Your Spot</div>
