@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Act With Audacity — The Bridge Between Knowing And Doing</title>
-<meta name="description" content="A 3-hour live group challenge for people who already know what to do, but can't get themselves to do it. Reserve your spot — free.">
+<title>Act With Audacity — One Audacious Move From The Life You Keep Planning</title>
+<meta name="description" content="A live group challenge using The Audacity Sequence — for people who've read the books, taken the courses, and still haven't made the move. One focused morning. Free to join.">
 <meta property="og:title" content="Act With Audacity">
-<meta property="og:description" content="3 hours. Live. Online. You won't be the same person when it's over.">
+<meta property="og:description" content="One focused morning. One audacious move. You'll leave different.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +141,103 @@
     background: var(--gold-hot);
     transform: translateY(-1px);
     box-shadow: 0 8px 22px rgba(245, 166, 35, 0.45);
+  }
+
+  /* ========================================================
+     STICKY COUNTDOWN BAR — appears after scrolling past hero
+     ======================================================== */
+  .sticky-cd {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: var(--ink);
+    color: var(--ink-on-dark);
+    padding: 10px 0;
+    transform: translateY(-100%);
+    transition: transform 0.35s cubic-bezier(.4,.0,.2,1);
+    border-bottom: 1px solid rgba(255, 184, 64, 0.25);
+    box-shadow: 0 4px 18px rgba(15, 14, 23, 0.22);
+  }
+  .sticky-cd.show { transform: translateY(0); }
+  .sticky-cd .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .sticky-cd-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-on-dark-dim);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .sticky-live-dot {
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+    animation: livePulse 2s ease-in-out infinite;
+  }
+  .sticky-cd-timer {
+    display: inline-flex;
+    gap: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--gold-hot);
+    flex: 1;
+    justify-content: center;
+  }
+  .sticky-cd-timer span {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+  .sticky-cd-timer b {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    min-width: 28px;
+    text-align: right;
+  }
+  .sticky-cd-timer i {
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-on-dark-quiet);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .sticky-cd-cta {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold-bright);
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .sticky-cd-cta:hover { background: var(--gold-hot); }
+
+  @media (max-width: 720px) {
+    .sticky-cd { padding: 8px 0; }
+    .sticky-cd .container { gap: 10px; }
+    .sticky-cd-label { display: none; }
+    .sticky-cd-timer { gap: 10px; justify-content: flex-start; }
+    .sticky-cd-timer b { font-size: 18px; min-width: 22px; }
+    .sticky-cd-cta { padding: 8px 13px; font-size: 11px; }
   }
 
   /* ========================================================
@@ -1098,6 +1195,157 @@
     background: rgba(255, 184, 64, 0.06);
   }
 
+  .lede-on-dark {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(17px, 1.6vw, 19px);
+    color: var(--ink-on-dark-dim);
+    max-width: 58ch;
+    margin: 0 auto 48px;
+    text-align: center;
+    line-height: 1.55;
+  }
+
+  /* ========================================================
+     WHO THIS IS NOT FOR
+     ======================================================== */
+  .section-not-for .section-title { max-width: 18ch; }
+  .not-for-list {
+    list-style: none;
+    margin: 40px 0 30px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .not-for-list li {
+    display: flex;
+    gap: 20px;
+    padding: 26px 28px;
+    background: var(--cream);
+    border: 1px solid var(--paper-border);
+    border-left: 3px solid var(--ink-faint);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+  .not-for-list li:hover {
+    border-left-color: var(--gold-bright);
+    background: var(--cream-warm);
+  }
+  .nf-mark {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(15, 14, 23, 0.06);
+    color: var(--ink-dim);
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .not-for-list li > div:last-child { flex: 1; }
+  .not-for-list strong {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .not-for-list p {
+    font-size: 15.5px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .not-for-list em {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+  .not-for-kicker {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 26px);
+    color: var(--ink);
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+    line-height: 1.4;
+  }
+
+  /* ========================================================
+     SHOW-UP BONUS GRID
+     ======================================================== */
+  .show-up .section-title { max-width: 22ch; }
+  .show-up-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin: 44px 0 30px;
+  }
+  .show-up-card {
+    background: var(--paper);
+    border: 1px solid var(--paper-border);
+    border-radius: 12px;
+    padding: 28px 24px 26px;
+    box-shadow: var(--shadow-xs);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .show-up-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-bright), var(--gold-hot));
+  }
+  .show-up-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .su-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 14px;
+  }
+  .su-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 2vw, 26px);
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .su-body {
+    font-size: 15px;
+    color: var(--ink-dim);
+    line-height: 1.55;
+  }
+  .show-up-fine {
+    font-size: 14px;
+    color: var(--ink-quiet);
+    text-align: center;
+    margin-top: 24px;
+    max-width: 62ch;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+  }
+
+  @media (max-width: 860px) {
+    .show-up-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 640px) {
+    .not-for-list li { padding: 22px 20px; gap: 14px; }
+    .nf-mark { width: 30px; height: 30px; font-size: 14px; }
+  }
+
   /* ========================================================
      TESTIMONIALS — LIGHT, airy
      ======================================================== */
@@ -1756,18 +2004,31 @@
 <nav>
   <div class="container">
     <div class="logo">ACT WITH <span>AUDACITY</span></div>
-    <a href="#reserve" class="nav-cta">Reserve Spot</a>
   </div>
 </nav>
+
+<!-- Sticky countdown bar — appears once user scrolls past hero -->
+<div class="sticky-cd" id="sticky-cd" aria-hidden="true">
+  <div class="container">
+    <div class="sticky-cd-label"><span class="sticky-live-dot"></span>Next challenge begins in</div>
+    <div class="sticky-cd-timer">
+      <span><b id="sc-days">00</b><i>d</i></span>
+      <span><b id="sc-hours">00</b><i>h</i></span>
+      <span><b id="sc-mins">00</b><i>m</i></span>
+      <span><b id="sc-secs">00</b><i>s</i></span>
+    </div>
+    <a href="#reserve" class="sticky-cd-cta">Save My Spot</a>
+  </div>
+</div>
 
 <!-- ==================== HERO — warm dawn gradient ==================== -->
 <section class="hero">
   <div class="container">
-    <div class="eyebrow"><span class="live-dot"></span>3 Hours · Live · Online</div>
-    <div class="pre-headline">For The High-Achiever Who Knows They're Capable Of More</div>
-    <h1>The 3-Hour Live Challenge That Turns Everything You <em>Know</em> Into Everything You <span class="accent">Do.</span></h1>
-    <div class="hero-sub">You've read the books. Done the courses. Built the knowledge.<br>So why are you still waiting?</div>
-    <p class="sub">The problem isn't what you know. It's what happens — or doesn't — <strong>after</strong> you know it. One room. One night. The version of you that's been on standby finally gets the green light.</p>
+    <div class="eyebrow"><span class="live-dot"></span>One Focused Morning · Live · Online</div>
+    <div class="pre-headline">If You've Read The Books, Taken The Courses — And Still Haven't Made The Move...</div>
+    <h1>You're <span class="accent">One Audacious Move</span> Away From The Life You Keep <em>Planning.</em></h1>
+    <div class="hero-sub">Not one more book. Not one more course.<br>One move.</div>
+    <p class="sub">In <strong>three focused hours</strong>, we walk you through <strong>The Audacity Sequence</strong> — a live group process that converts the knowledge you already have into the move you keep delaying. Not more theory. The actual move. Before you close the tab.</p>
 
     <div class="countdown-wrap">
       <div class="countdown-label">Next Challenge Begins In</div>
@@ -1780,17 +2041,17 @@
     </div>
 
     <div class="form-card">
-      <div class="form-eyebrow">Reserve Your Spot</div>
+      <div class="form-eyebrow">Claim Your Seat</div>
       <form class="signup" id="hero-form" novalidate>
         <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name">
         <input type="email" name="email" placeholder="Your email" required autocomplete="email">
-        <button type="submit" class="btn-primary">Reserve — Free</button>
+        <button type="submit" class="btn-primary">Yes — Save My Spot</button>
       </form>
       <div class="success" id="hero-success">
         <strong>You're in.</strong>
         <span>Check your email for confirmation. Bring yourself and a phone. That's all you need.</span>
       </div>
-      <p class="fine">Free to join · <strong>Limited to 50 spots</strong> · No spam, ever.</p>
+      <p class="fine">Free to join · <strong>Limited to 50 seats</strong> · No spam, ever.</p>
     </div>
   </div>
 </section>
@@ -1944,29 +2205,94 @@
 <!-- ==================== WHAT HAPPENS — THE ONE DARK FEATURE ==================== -->
 <section class="feature-dark">
   <div class="container-narrow">
-    <span class="section-eyebrow fade-in">What Actually Happens</span>
-    <h2 class="section-title fade-in">Three hours. A series of <span class="accent">challenges.</span> You won't be the same.</h2>
+    <span class="section-eyebrow fade-in">The Audacity Sequence</span>
+    <h2 class="section-title fade-in">Four steps. Three focused hours. <span class="accent">One move</span> you won't undo.</h2>
+    <p class="lede-on-dark fade-in">Every session runs the same proprietary sequence. Built across 200+ live rooms. Refined until it works on the exact person who's been "getting ready" for years.</p>
 
     <ul class="what-list">
       <li class="fade-in">
         <span class="num">01</span>
-        We go live. You, and a small room of people who raised their hand for the same reason you did.
+        <strong>The Room.</strong> We go live. You, and a small group of people who raised their hand for the exact same reason you did. No lurking. No cameras off.
       </li>
       <li class="fade-in">
         <span class="num">02</span>
-        You'll be given challenges. Real ones. The kind your brain rejects in about ninety seconds flat.
+        <strong>The Naming.</strong> We isolate the one move you've been avoiding. Not ten moves. Not a life plan. The specific thing your 3am brain already knows you need to do.
       </li>
       <li class="fade-in">
         <span class="num">03</span>
-        You'll do them anyway. Because everyone else is doing theirs. Because the timer is running. Because this is exactly what you showed up for.
+        <strong>The Crossing.</strong> You make it. Live. While the room is watching and doing theirs. The timer is running. Your old escape routes are closed. This is what you came for.
       </li>
       <li class="fade-in">
         <span class="num">04</span>
-        Three hours later you close the tab — and something in you has moved. Not figuratively. Literally. You'll feel it in your chest.
+        <strong>The Anchor.</strong> Before you close the tab, we lock in what just happened so it can't quietly un-happen by Thursday. You leave different. On purpose.
       </li>
     </ul>
 
-    <div class="no-spoilers fade-in">No spoilers. That's the point.</div>
+    <div class="no-spoilers fade-in">No slides. No breakout activities. No "reflection journal." You're going to move.</div>
+  </div>
+</section>
+
+<!-- ==================== WHO THIS IS NOT FOR — paper, honest ==================== -->
+<section class="section-paper section-not-for">
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">Before You Book A Seat</span>
+    <h2 class="section-title fade-in">This is <span class="accent">not</span> for everyone.</h2>
+    <p class="lede fade-in">Fifty seats. Real ones. If any of these are you, please leave the seat for someone else — no hard feelings.</p>
+
+    <ul class="not-for-list">
+      <li class="fade-in">
+        <div class="nf-mark">✕</div>
+        <div>
+          <strong>You want another great talk to watch.</strong>
+          <p>This isn't content. There's no slide deck to screenshot. You'll be moving, not consuming. If you came to nod along, you'll hate this.</p>
+        </div>
+      </li>
+      <li class="fade-in">
+        <div class="nf-mark">✕</div>
+        <div>
+          <strong>You don't actually know what you should be doing.</strong>
+          <p>This is a <em>doing</em> intervention, not a clarity workshop. If you haven't yet figured out the move, go do that first. Come back when the thing you're avoiding is specific.</p>
+        </div>
+      </li>
+      <li class="fade-in">
+        <div class="nf-mark">✕</div>
+        <div>
+          <strong>You want to keep your options open.</strong>
+          <p>The Audacity Sequence closes doors on purpose. If the phrase "I just want to keep exploring" is load-bearing in your life right now, this will feel like a trap. Because it is.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="not-for-kicker fade-in">Still reading? Good. You're exactly who this was built for.</div>
+  </div>
+</section>
+
+<!-- ==================== SHOW UP BONUS — warm cream ==================== -->
+<section class="section-warm show-up">
+  <div class="container-narrow">
+    <span class="section-eyebrow fade-in">For People Who Actually Show Up</span>
+    <h2 class="section-title fade-in">Show up live. Leave with <span class="accent">something extra.</span></h2>
+    <p class="lede fade-in">The Sequence only works live. Registration holds your seat. <strong>Showing up</strong> is what earns the bonuses — and they're only available to people in the room on the day.</p>
+
+    <div class="show-up-grid">
+      <div class="show-up-card fade-in">
+        <div class="su-tag">Bonus 01 · Live Only</div>
+        <div class="su-title">The 72-Hour Follow-Up Call</div>
+        <div class="su-body">Live group call exactly 72 hours after the session — the window where old-you tries to quietly reverse the move. We don't let that happen.</div>
+      </div>
+      <div class="show-up-card fade-in">
+        <div class="su-tag">Bonus 02 · Live Only</div>
+        <div class="su-title">The Audacity Sequence Field Guide</div>
+        <div class="su-body">Written reference you keep — the exact internal script for running the Sequence on yourself, any time fear shows up as research or "more thinking."</div>
+      </div>
+      <div class="show-up-card fade-in">
+        <div class="su-tag">Bonus 03 · Live Only</div>
+        <div class="su-title">Cohort Slack — 14 Days</div>
+        <div class="su-body">Private channel with the room. Two weeks. Post the next move, watch theirs, collect receipts. Closes at day 14 on purpose.</div>
+      </div>
+    </div>
+
+    <p class="show-up-fine fade-in">Register but don't show up live? The replay is not sent and bonuses are not released. No exceptions — this is part of the mechanism, not a marketing tactic.</p>
   </div>
 </section>
 
@@ -2006,16 +2332,16 @@
 
     <div class="quotes-grid">
       <div class="quote fade-in">
-        <p>I made a phone call I'd been putting off for six months. In the first 20 minutes. I'm still trying to figure out how that even happened.</p>
+        <p>I'd been "about to launch" my consulting business for <strong>14 months</strong>. Logo done, website done, still no clients. Three focused hours inside The Audacity Sequence and I sent the pitch email I'd rewritten nine times. <strong>Signed my first client by the following Tuesday.</strong></p>
         <div class="attribution"><strong>Marcus T.</strong> &nbsp;·&nbsp; Founder, B2B SaaS</div>
       </div>
       <div class="quote fade-in">
-        <p>I've done every self-development program you can name. This was the first thing that made me <em>do</em> something instead of just understanding why I should. Two weeks later I'd quit the role I was stuck in.</p>
+        <p>I'd known I needed to leave my role for <strong>two years</strong>. Read every "quit your job" book on the planet. The Sequence forced the conversation I'd been rehearsing in my head. <strong>I handed in my notice the same evening</strong> — from the same laptop I'd just closed Zoom on.</p>
         <div class="attribution"><strong>Priya R.</strong> &nbsp;·&nbsp; Ex-consultant, now independent</div>
       </div>
       <div class="quote fade-in">
-        <p>I felt ridiculous for half of it. Then I felt alive in a way I hadn't felt in years. I don't know exactly what they do, but whatever it is, it worked.</p>
-        <div class="attribution"><strong>James K.</strong> &nbsp;·&nbsp; Product lead</div>
+        <p>I'd been "working on the book" for <strong>three years</strong> — one finished chapter. The Naming phase of the Sequence made me realise I was hiding. I published chapter one as a public Substack post <strong>before the session even ended.</strong> Eight months later, the book is out.</p>
+        <div class="attribution"><strong>James K.</strong> &nbsp;·&nbsp; Author, The Quiet Builder</div>
       </div>
     </div>
 
@@ -2110,23 +2436,23 @@
       </div>
       <div class="detail">
         <div class="label">Duration</div>
-        <div class="value">3 Hours</div>
+        <div class="value">3 Focused Hours</div>
       </div>
       <div class="detail">
         <div class="label">Where</div>
-        <div class="value">Online · Zoom</div>
+        <div class="value">Online · Zoom · Live</div>
+      </div>
+      <div class="detail">
+        <div class="label">Method</div>
+        <div class="value gold">The Audacity Sequence</div>
       </div>
       <div class="detail">
         <div class="label">Cost</div>
-        <div class="value gold">Free</div>
+        <div class="value">Free</div>
       </div>
       <div class="detail">
-        <div class="label">Spots</div>
+        <div class="label">Seats</div>
         <div class="value">50 Max</div>
-      </div>
-      <div class="detail">
-        <div class="label">Bring</div>
-        <div class="value">You. A Phone.</div>
       </div>
     </div>
   </div>
@@ -2140,27 +2466,27 @@
 
     <div class="faq fade-in">
       <div class="faq-item">
-        <div class="faq-q">What actually happens in the 3 hours? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">We're not going to tell you. Trust us on this one. The not-knowing is part of what makes it work — you can't rehearse your way out of it.</div>
+        <div class="faq-q">What is The Audacity Sequence, exactly? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Four-step live group process — Room, Naming, Crossing, Anchor. It converts knowledge you already have into a specific move you make before the session ends. We won't spoil the mechanics inside each step. That's part of what makes it work.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Do I need to prepare anything? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">No. Just show up on time. Don't read up. Don't mentally rehearse. The less prepared you are, the better this works.</div>
+        <div class="faq-a">No. Don't read up. Don't mentally rehearse. The less prepared you are, the better this works. Just clear three focused hours and show up on time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I just watch the replay? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">No replay is sent. The Sequence only works live — the mechanism depends on the room, the timer, and the move happening in real time. This is by design, not marketing.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What if I'm nervous? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Good. That's the point. If you weren't nervous, you wouldn't need this. Nervous means you're exactly the kind of person this was built for.</div>
+        <div class="faq-a">Good. If you weren't, you wouldn't need this. Nervous means you're exactly the kind of person this was built for.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Is it really free? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Yes. The only cost is your comfort zone. No upsell during the session. No "course" waiting at the end.</div>
+        <div class="faq-a">Yes. No upsell during the session. No "course" waiting at the end. The live bonuses go to people who show up. That's it.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">What happens after the 3 hours? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">You'll feel different. That's the start, not the end. What you do with it is yours.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What if I can't do one of the challenges? <span class="faq-toggle">+</span></div>
+        <div class="faq-q">What if I can't do The Crossing on the day? <span class="faq-toggle">+</span></div>
         <div class="faq-a">You can always pass. No pressure, no judgement. But in our experience — once the group starts moving, you'll want in.</div>
       </div>
     </div>
@@ -2170,22 +2496,22 @@
 <!-- ==================== FINAL CTA — warm cream ==================== -->
 <section class="final" id="reserve">
   <div class="container-narrow">
-    <div class="final-stamp fade-in">Next Challenge · <span id="final-date">—</span></div>
-    <h2 class="section-title fade-in">Stop reading about it. <span class="accent">Do it.</span></h2>
-    <p class="lede fade-in">The next one starts in <strong><span id="final-countdown">—</span></strong>. Fifty seats. When it's full, it's full — and the next date isn't on the calendar yet. Three hours from now could be the Tuesday everything turned.</p>
+    <div class="final-stamp fade-in">Next Sequence · <span id="final-date">—</span></div>
+    <h2 class="section-title fade-in">You're one move away. <span class="accent">Make it.</span></h2>
+    <p class="lede fade-in">The next live Sequence starts in <strong><span id="final-countdown">—</span></strong>. Fifty seats. When it's full, it's full — and the next date isn't on the calendar yet. Three focused hours from now could be the morning everything turned.</p>
 
     <div class="form-card">
-      <div class="form-eyebrow">Reserve Your Spot</div>
+      <div class="form-eyebrow">Claim Your Seat</div>
       <form class="signup" id="final-form" novalidate>
         <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name">
         <input type="email" name="email" placeholder="Your email" required autocomplete="email">
-        <button type="submit" class="btn-primary">Reserve — Free</button>
+        <button type="submit" class="btn-primary">I'm Ready — Save My Seat</button>
       </form>
       <div class="success" id="final-success">
         <strong>You're in.</strong>
-        <span>Check your email for confirmation. See you there.</span>
+        <span>Check your email for confirmation. Show up live to unlock the bonuses.</span>
       </div>
-      <p class="fine">Free · <strong>50 spots</strong> · Online</p>
+      <p class="fine">Free · <strong>50 seats</strong> · Live Only · Bonuses for attendees</p>
     </div>
   </div>
 </section>
@@ -2226,11 +2552,37 @@
     document.getElementById('cd-mins').textContent = pad(mins);
     document.getElementById('cd-secs').textContent = pad(secs);
 
+    const scDays = document.getElementById('sc-days');
+    if (scDays) {
+      scDays.textContent = pad(days);
+      document.getElementById('sc-hours').textContent = pad(hours);
+      document.getElementById('sc-mins').textContent = pad(mins);
+      document.getElementById('sc-secs').textContent = pad(secs);
+    }
+
     document.getElementById('final-countdown').textContent =
       days + ' days · ' + pad(hours) + ':' + pad(mins) + ':' + pad(secs);
   }
   tick();
   setInterval(tick, 1000);
+
+  // Sticky countdown: show after user scrolls past the hero
+  const stickyCd = document.getElementById('sticky-cd');
+  const heroEl = document.querySelector('.hero');
+  if (stickyCd && heroEl) {
+    const trigger = () => {
+      const threshold = heroEl.offsetTop + heroEl.offsetHeight * 0.65;
+      if (window.scrollY > threshold) {
+        stickyCd.classList.add('show');
+        stickyCd.setAttribute('aria-hidden', 'false');
+      } else {
+        stickyCd.classList.remove('show');
+        stickyCd.setAttribute('aria-hidden', 'true');
+      }
+    };
+    window.addEventListener('scroll', trigger, { passive: true });
+    trigger();
+  }
 
   function handleForm(formId, successId) {
     const form = document.getElementById(formId);
